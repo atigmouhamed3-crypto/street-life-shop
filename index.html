@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090909">
+<title>STREET LIFE | Roleplay Store</title>
+<style>
+:root{--red:#e32636;--red2:#ff4050;--bg:#090909;--panel:#131313;--muted:#9b9b9b;--line:#282828}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:#f7f7f7;font-family:Inter,Arial,sans-serif}
+a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}
+header{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;border-bottom:1px solid #222;background:#090909ed;position:sticky;top:0;z-index:5;backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:12px;font-weight:950;letter-spacing:2px}.brand img{width:54px;height:54px;object-fit:contain}.brand span{color:var(--red)}
+nav{display:flex;gap:28px;color:#ccc;font-size:13px;text-transform:uppercase;letter-spacing:1px}nav a:hover{color:var(--red)}
+.cart{border:1px solid #383838;background:#171717;color:white;padding:10px 15px;border-radius:7px}.cart b{color:var(--red)}
+.hero{min-height:560px;padding:75px 7% 65px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:30px;background:radial-gradient(ellipse at 75% 45%,#4c1018 0,transparent 45%),linear-gradient(110deg,#090909,#10090a)}
+.eyebrow{color:var(--red2);font-weight:800;letter-spacing:4px;font-size:11px}.hero h1{font-size:clamp(46px,7vw,88px);line-height:.92;margin:18px 0;text-transform:uppercase;font-weight:1000;letter-spacing:-4px}.hero h1 span{color:var(--red)}.hero p{max-width:520px;color:#aaa;line-height:1.8}.actions{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}.primary,.secondary{padding:14px 22px;border-radius:5px;font-weight:900;text-transform:uppercase;letter-spacing:1px;font-size:12px}.primary{background:var(--red);border:1px solid var(--red);color:white}.primary:hover{background:#bd1727}.secondary{background:transparent;border:1px solid #555;color:white}.hero-art{display:flex;justify-content:center;align-items:center}.hero-art img{width:min(100%,440px);max-height:390px;object-fit:contain;filter:drop-shadow(0 20px 45px #d21d3440)}
+section{padding:65px 7%}.section-top{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:25px}.section-top h2{font-size:32px;margin:8px 0 0;text-transform:uppercase}.section-top p{color:var(--muted);font-size:13px}
+.filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:25px}.filter{background:#151515;border:1px solid #333;color:#bbb;padding:10px 16px;border-radius:4px;font-size:11px;font-weight:800;text-transform:uppercase}.filter.active,.filter:hover{background:var(--red);border-color:var(--red);color:white}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.product{background:linear-gradient(145deg,#171717,#101010);border:1px solid #292929;border-radius:8px;overflow:hidden;transition:.2s}.product:hover{transform:translateY(-5px);border-color:#8e2530}.product-art{height:155px;background:radial-gradient(circle at 50% 80%,#57121c,#191112 60%,#141414);display:grid;place-items:center;font-size:55px}.product-info{padding:17px}.tag{font-size:9px;color:var(--red2);letter-spacing:2px;font-weight:900}.product h3{margin:8px 0;font-size:16px}.desc{font-size:12px;color:#999;min-height:34px;line-height:1.5}.price-row{display:flex;align-items:center;justify-content:space-between;margin-top:15px}.price{font-weight:900;font-size:18px}.add{background:#252525;border:1px solid #444;color:white;padding:9px 12px;border-radius:4px;font-size:11px;font-weight:900}.add:hover{background:var(--red);border-color:var(--red)}
+.info{background:#111;border-top:1px solid #222;border-bottom:1px solid #222}.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.info-card{padding:22px;background:#151515;border:1px solid #292929;border-radius:7px}.info-card strong{display:block;margin:10px 0}.info-card p{color:#999;font-size:13px;line-height:1.6;margin:0}.ico{font-size:25px}
+footer{padding:35px 7%;display:flex;justify-content:space-between;gap:20px;color:#777;font-size:12px}footer b{color:white;letter-spacing:2px}
+.drawer{position:fixed;inset:0;background:#000a;z-index:10;display:none;justify-content:flex-end}.drawer.open{display:flex}.drawer-panel{width:min(420px,100%);background:#111;padding:25px;overflow:auto;border-left:1px solid #333}.drawer-head{display:flex;justify-content:space-between;align-items:center}.close{background:none;border:0;color:white;font-size:25px}.cart-line{padding:15px 0;border-bottom:1px solid #333;display:flex;justify-content:space-between;gap:10px;font-size:13px}.checkout{width:100%;margin-top:20px}.hint{color:#888;font-size:11px;line-height:1.6;margin-top:14px}
+@media(max-width:900px){.products{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr;text-align:center}.hero p{margin:auto}.actions{justify-content:center}.hero-art img{max-height:250px}nav{display:none}}
+@media(max-width:520px){header{padding:0 4%}.brand img{width:45px;height:45px}.hero{padding:55px 6%}.hero h1{letter-spacing:-2px}.products{grid-template-columns:1fr 1fr;gap:9px}.product-art{height:115px}.product-info{padding:12px}.product h3{font-size:13px}.price{font-size:15px}.section-top h2{font-size:25px}.info-grid{grid-template-columns:1fr}footer{flex-direction:column}}
+</style>
+</head>
+<body>
+<header>
+ <a class="brand" href="#"><img src="assets/street-life-logo.png" alt="Street Life logo"><div>STREET <span>LIFE</span></div></a>
+ <nav><a href="#shop">Shop</a><a href="#benefits">Why us</a><a href="#support">Support</a></nav>
+ <button class="cart" id="openCart">CART <b id="count">0</b></button>
+</header>
+<main>
+ <div class="hero">
+  <div><div class="eyebrow">WELCOME TO THE OFFICIAL STORE</div><h1>OWN THE<br><span>STREETS.</span></h1>
+  <p>Upgrade your Street Life Roleplay experience. Discover exclusive vehicles, characters and in-city perks made for your story.</p>
+  <div class="actions"><a class="primary" href="#shop">Explore the shop</a><a class="secondary" href="#support">Need help?</a></div></div>
+  <div class="hero-art"><img src="assets/street-life-animated-logo.gif" alt="Street Life Roleplay animated logo"></div>
+ </div>
+ <section id="shop"><div class="section-top"><div><div class="eyebrow">THE COLLECTION</div><h2>STORE CATEGORIES</h2></div><p>Choose your next upgrade.</p></div>
+  <div class="filters" id="filters"><button class="filter active" data-cat="all">All items</button><button class="filter" data-cat="vehicles">Vehicles</button><button class="filter" data-cat="peds">Peds</button><button class="filter" data-cat="properties">Properties</button><button class="filter" data-cat="vip">VIP</button><button class="filter" data-cat="weapons">Weapons</button></div>
+  <div class="products" id="products"></div>
+ </section>
+ <section class="info" id="benefits"><div class="section-top"><div><div class="eyebrow">STREET LIFE EXPERIENCE</div><h2>BUILT FOR YOUR STORY</h2></div></div>
+  <div class="info-grid"><div class="info-card"><div class="ico">⚡</div><strong>Fast delivery</strong><p>Eligible purchases can be delivered in-game automatically once the store is connected to your Tebex package setup.</p></div><div class="info-card"><div class="ico">🔒</div><strong>Secure checkout</strong><p>Checkout will be handled by your official Tebex store after you add its public store link.</p></div><div class="info-card" id="support"><div class="ico">🎧</div><strong>Community support</strong><p>Need help with an order? Add your Discord invite here so players can contact your staff team.</p></div></div>
+ </section>
+</main>
+<footer><b>STREET LIFE ROLEPLAY</b><span>Unofficial demo storefront · Replace sample products and connect Tebex before launch.</span></footer>
+<div class="drawer" id="drawer"><div class="drawer-panel"><div class="drawer-head"><h2>Your cart</h2><button class="close" id="closeCart">×</button></div><div id="cartItems"></div><div class="cart-line"><b>Total</b><b id="total">€0.00</b></div><button class="primary checkout" id="checkout">Continue to checkout</button><p class="hint">Demo cart only. To accept payments, add your public Tebex store/checkout integration. Never place a Tebex secret key in this website.</p></div></div>
+<script>
+const items=[
+{id:1,name:"Street Supercar",cat:"vehicles",price:15,icon:"🏎️",desc:"Exclusive high-performance vehicle."},
+{id:2,name:"Luxury SUV",cat:"vehicles",price:12,icon:"🚙",desc:"A premium ride for the city."},
+{id:3,name:"Custom Ped",cat:"peds",price:8,icon:"🧍",desc:"Stand out with a custom character."},
+{id:4,name:"Elite Outfit",cat:"peds",price:5,icon:"🧥",desc:"A unique look for your roleplay."},
+{id:5,name:"Luxury Villa",cat:"properties",price:20,icon:"🏡",desc:"A premium home for your story."},
+{id:6,name:"VIP Rank",cat:"vip",price:18,icon:"💎",desc:"Exclusive server perks and status."},
+{id:7,name:"Weapon Bundle",cat:"weapons",price:10,icon:"🎯",desc:"A themed in-game equipment bundle."},
+{id:8,name:"Founder Pack",cat:"vip",price:30,icon:"👑",desc:"A special supporter package."}
+];
+let cart=[];
+const products=document.getElementById('products');
+function render(cat='all'){products.innerHTML=items.filter(x=>cat==='all'||x.cat===cat).map(x=>`<article class="product"><div class="product-art">${x.icon}</div><div class="product-info"><div class="tag">${x.cat.toUpperCase()}</div><h3>${x.name}</h3><div class="desc">${x.desc}</div><div class="price-row"><span class="price">€${x.price.toFixed(2)}</span><button class="add" onclick="add(${x.id})">ADD +</button></div></div></article>`).join('')}
+function add(id){const item=items.find(x=>x.id===id);cart.push(item);updateCart()}
+function updateCart(){document.getElementById('count').textContent=cart.length;document.getElementById('cartItems').innerHTML=cart.length?cart.map((x,i)=>`<div class="cart-line"><span>${x.icon} ${x.name}</span><span>€${x.price.toFixed(2)} <button onclick="removeItem(${i})" style="background:none;border:0;color:#f66">×</button></span></div>`).join(''):'<p style="color:#888">Your cart is empty.</p>';document.getElementById('total').textContent='€'+cart.reduce((s,x)=>s+x.price,0).toFixed(2)}
+function removeItem(i){cart.splice(i,1);updateCart()}
+document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');render(b.dataset.cat)}));
+const drawer=document.getElementById('drawer');document.getElementById('openCart').onclick=()=>drawer.classList.add('open');document.getElementById('closeCart').onclick=()=>drawer.classList.remove('open');drawer.addEventListener('click',e=>{if(e.target===drawer)drawer.classList.remove('open')});
+document.getElementById('checkout').onclick=()=>alert('Tebex is not connected yet. Add your public Tebex store link and package IDs to enable real checkout.');
+render();updateCart();
+</script>
+</body></html>
